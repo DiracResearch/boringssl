@@ -90,6 +90,7 @@ elseif(MSVC)
       "C4800" # 'int' : forcing value to bool 'true' or 'false'
               # (performance warning)
       "C4820" # 'bytes' bytes padding added after construct 'member_name'
+      "C4987" # nonstandard extension used: 'throw (...)'
       "C5026" # move constructor was implicitly defined as deleted
       "C5027" # move assignment operator was implicitly defined as deleted
       )
@@ -236,10 +237,13 @@ if (OPENSSL_NO_ASM)
   set(ARCH "generic")
 endif()
 
+option(BORINGSSL_ENABLE_GTEST "Build gtest executables" OFF)
+if (BORINGSSL_ENABLE_GTEST)
 # Add minimal googletest targets. The provided one has many side-effects, and
 # googletest has a very straightforward build.
 add_library(gtest third_party/googletest/src/gtest-all.cc)
 target_include_directories(gtest PRIVATE third_party/googletest)
+endif()
 
 include_directories(third_party/googletest/include)
 

@@ -36,6 +36,7 @@ add_library(
 
 target_link_libraries(decrepit crypto ssl)
 
+if(BORINGSSL_ENABLE_GTEST)
 add_executable(
   decrepit_test
 
@@ -47,3 +48,4 @@ add_executable(
 
 target_link_libraries(decrepit_test crypto decrepit gtest)
 add_dependencies(all_tests decrepit_test)
+endif()

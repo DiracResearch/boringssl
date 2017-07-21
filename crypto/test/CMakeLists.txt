@@ -8,6 +8,7 @@ add_library(
   test_util.cc
 )
 
+if (BORINGSSL_ENABLE_GTEST)
 add_library(
   gtest_main
 
@@ -15,3 +16,4 @@ add_library(
 
   gtest_main.cc
 )
+endif()

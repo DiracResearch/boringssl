@@ -176,6 +176,8 @@ if(NOT MSVC AND NOT ANDROID)
   target_link_libraries(crypto pthread)
 endif()
 
+if(BORINGSSL_ENABLE_GTEST)
+
 add_executable(
   constant_time_test
 
@@ -224,3 +226,4 @@ add_executable(
 
 target_link_libraries(crypto_test crypto gtest)
 add_dependencies(all_tests crypto_test)
+endif()

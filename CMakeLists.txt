@@ -1,7 +1,8 @@
-cmake_minimum_required (VERSION 2.8.11)
+cmake_minimum_required (VERSION 3.4)
 
 # Defer enabling C and CXX languages.
 project (BoringSSL NONE)
+cmake_policy(SET CMP0054 OLD)
 
 if(WIN32)
   # On Windows, prefer cl over gcc if both are available. By default most of
